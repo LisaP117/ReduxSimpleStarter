@@ -4,7 +4,12 @@ import VideoListItem from './video_list_item';
 // add props as argument so it pulls through for class based, functional requires this.props
 const VideoList = (props) => {
 	const videoItems = props.videos.map((video) => {
-		return <VideoListItem key={video.etag} video={video} />
+		return (
+			<VideoListItem 
+			onVideoSelect={props.onVideoSelect}
+			key={video.etag} 
+			video={video} />
+		)
 	});
 	return (
 		<ul className="col-md-4 list-group">
