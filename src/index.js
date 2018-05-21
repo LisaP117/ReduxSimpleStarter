@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -17,9 +18,14 @@ class App extends Component {
 			videos: [],
 			selectedVideo: null 
 		};
+
+		this.videoSearch('Imagine Dragons');
+	}
+
+	videoSearch(term) {
 		// object with a key with and a term
 		// config options and callback function
-		YTSearch({key: API_KEY, term: 'imagine dragons thunder'}, (videos) => {
+		YTSearch({key: API_KEY, term: term}, (videos) => {
 			// only works when key an property are the same
 			this.setState({ 
 				videos: videos,
@@ -29,9 +35,14 @@ class App extends Component {
 	}
 
 	render() {
+
+		const videoSearch = _.debounce((term) => {
+			this.videoSearch(term);
+		}, 300)
+
 		return (
 			<div>  
-				<SearchBar />
+				<SearchBar onSearchTermChange={videoSearch} />
 				<VideoDetail video={this.state.selectedVideo} />
 				<VideoList 
 				onVideoSelect={selectedVideo => this.setState({selectedVideo}) }

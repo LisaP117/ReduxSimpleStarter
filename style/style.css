@@ -1,0 +1,28 @@
+.search-bar {
+	margin: 20px;
+	text-align: center;
+}
+
+.search-bar input {
+	width: 66%;
+    margin: 0;
+    display: block;
+    padding: 15px 10px;
+}
+
+.details h1 {
+	line-height: 1.7em;
+    margin: 10px 0;
+}
+
+.list-group-item {
+	cursor: pointer;
+}
+
+.list-group-item:hover {
+	background: #F5F5F7;
+}
+
+.list-group-item .media-heading {
+	font-size: 14px;
+}
